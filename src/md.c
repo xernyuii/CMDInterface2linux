@@ -4,20 +4,15 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
+#include <regex.h>
+#include "../include/line.h"
+
+
 
 int main(int argc, char* argv[]){
     char lines[argc+2][255];
 
-    for(int i=0;i<argc;i++){
-        //printf("%s ", argv[i]);
-        int real_len=0;
-        for(int j=0;j<strlen(argv[i]);j++){
-            if(isalpha(argv[i][j])||isdigit(argv[i][j]))
-                lines[i][real_len++]=tolower(argv[i][j]);
-        }
-        lines[i][real_len]='\0';
-        //printf("%s ", lines[i]);
-    }
+    predealLine(argc, argv, lines);
 
     if(strcmp(lines[0],"md")==0||strcmp(lines[0],"mkdir")==0){
         for(int i=1;i<argc;i++){
@@ -38,9 +33,6 @@ int main(int argc, char* argv[]){
         printf("%s: ", lines[0]);
         printf("sytax error!\n");
     }
-
-    
-
 
     return 0;
 }
