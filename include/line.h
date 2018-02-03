@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-int predealLine(int argc, char* argv[], char* lines[]){
+int predealLine(int argc, char* argv[], char (*lines)[255]){
     for(int i=0;i<argc;i++){
         //printf("%s ", argv[i]);
         int real_len=0;

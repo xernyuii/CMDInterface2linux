@@ -10,7 +10,7 @@
 
 
 int main(int argc, char* argv[]){
-    char lines[argc+2][255];
+    char lines[argc+1][255];
 
     predealLine(argc, argv, lines);
 
