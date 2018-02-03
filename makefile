@@ -8,7 +8,7 @@ CC=gcc
 
 bin/md, bin/mkdir: src/md.c
 	CC src/md.c -o bin/md
-	CC src/md.c -o bin/md
+	CC src/md.c -o bin/mkdir
 
 
 .PHONY: clean
