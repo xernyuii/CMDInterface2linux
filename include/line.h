@@ -2,12 +2,17 @@
 #include <string.h>
 #include <ctype.h>
 int predealLine(int argc, char* argv[], char (*lines)[255]){
-    for(int i=0;i<argc;i++){
+    int real_len=0;
+    for(int j=0;j<strlen(argv[0]);j++){
+        if(isalpha(argv[0][j])||isdigit(argv[0][j]))
+            lines[0][real_len++]=tolower(argv[0][j]);
+    }
+    lines[0][real_len]='\0';
+    for(int i=1;i<argc;i++){
         //printf("%s ", argv[i]);
-        int real_len=0;
+        real_len=0;
         for(int j=0;j<strlen(argv[i]);j++){
-            if(isalpha(argv[i][j])||isdigit(argv[i][j]))
-                lines[i][real_len++]=tolower(argv[i][j]);
+            lines[i][real_len++]=argv[i][j];
         }
         lines[i][real_len]='\0';
         //printf("%s ", lines[i]);
