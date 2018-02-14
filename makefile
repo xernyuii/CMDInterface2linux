@@ -7,7 +7,7 @@ $(CC)      :=gcc
 # put link file into build/
 	
 
-bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren, bin/rename: src/md.c src/cls.c src/dir.c src/del.c src/rd.c src/ren.c
+bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren, bin/rename, bin/tree: src/md.c src/cls.c src/dir.c src/del.c src/rd.c src/ren.c src/tree.c
 	mkdir -p bin
 	$(CC) src/md.c -o bin/md
 	$(CC) src/md.c -o bin/mkdir
@@ -19,6 +19,7 @@ bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren
 	$(CC) src/rd.c -o bin/rmdir
 	$(CC) src/ren.c -o bin/ren
 	$(CC) src/ren.c -o bin/rename
+	$(CC) src/tree.c -o bin/tree
 
 .PHONY: clean
 clean:
@@ -32,4 +33,5 @@ clean:
 	rm bin/rmdir
 	rm bin/ren
 	rm bin/rename
+	rm bin/tree
 
