@@ -52,10 +52,8 @@ int main(int argc, char** argv){
     predealLine(argc, argv, lines);
 
     if((strcmp("del",lines[0])==0)||(strcmp("rm",lines[0])==0)){
-        int st=1;
-        while(lines[st]){
-            remove_dir(lines[st]);
-            st++;
+        for(int i=1;i<argc;i++){
+            remove_dir(lines[i]);
         }
     }
     else{

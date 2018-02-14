@@ -25,7 +25,7 @@ int remove_dir(const char *dir){
         return -1;
     } //
     if(S_ISREG(dir_stat.st_mode)){
-        
+        remove(dir);
     }
     else if(S_ISDIR(dir_stat.st_mode)){
         dirp=opendir(dir);
@@ -50,10 +50,8 @@ int main(int argc, char** argv){
     char lines[argc+1][255];
     predealLine(argc, argv, lines);
     if((strcmp("rd",lines[0])==0)||(strcmp("rmdir",lines[0])==0)){
-        int st=1;
-        while(lines[st]){
-            remove_dir(lines[st]);
-            st++;
+        for(int i=1;i<argc;i++){
+            remove_dir(lines[i]);
         }
     }
     else{
