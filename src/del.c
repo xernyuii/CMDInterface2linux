@@ -47,13 +47,16 @@ int remove_dir(const char *dir){
     return 0;
 }
 
-
 int main(int argc, char** argv){
     char lines[argc+1][255];
     predealLine(argc, argv, lines);
 
     if((strcmp("del",lines[0])==0)||(strcmp("rm",lines[0])==0)){
-        remove_dir(lines[1]);
+        int st=1;
+        while(lines[st]){
+            remove_dir(lines[st]);
+            st++;
+        }
     }
     else{
         perror("error after lines\n");
