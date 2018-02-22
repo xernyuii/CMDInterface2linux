@@ -8,7 +8,7 @@ int builtin_command(char *command, char **parameters){
         printf("This is a simulation of shell (CMD) in Linux.\n");
         return 1;
     }
-    else if(strcmp(command,"cd")==0){
+    else if(strcmp(command,"./cd")==0){
         char *cd_path = NULL;
 
         if(parameters[1] == NULL){
