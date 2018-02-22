@@ -1,4 +1,5 @@
 $(CC)      :=gcc
+VPATH = src:bashlib:include
 # makefile created by xern
 
 # put source code into src/
@@ -6,9 +7,14 @@ $(CC)      :=gcc
 # put lib file into include/
 # put link file into build/
 	
-
-bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren, bin/rename, bin/tree, bin/echo, bin/type, bin/more: src/md.c src/cls.c src/dir.c src/del.c src/rd.c src/ren.c src/tree.c src/echo.c src/type.c src/more.c
+bin/cmd,bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, \
+bin/rd, bin/rmdir, bin/ren, bin/rename, bin/tree, bin/echo, bin/type, \
+bin/more: src/md.c src/cls.c src/dir.c src/del.c src/rd.c src/ren.c \
+src/tree.c src/echo.c src/type.c src/more.c  bashlib/cmd.h bashlib/cmd.c \
+bashlib/type_prompt.c bashlib/read_command.c bashlib/builtin_command.c bashlib/parsing.c
 	mkdir -p bin
+	$(CC) bashlib/cmd.c bashlib/type_prompt.c bashlib/read_command.c \
+	bashlib/builtin_command.c bashlib/parsing.c -o bin/cmd
 	$(CC) src/md.c -o bin/md
 	$(CC) src/md.c -o bin/mkdir
 	$(CC) src/cls.c -o bin/cls
@@ -26,17 +32,4 @@ bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren
 
 .PHONY: clean
 clean:
-	rm bin/md
-	rm bin/mkdir
-	rm bin/cls
-	rm bin/dir
-	rm bin/del
-	rm bin/rm
-	rm bin/rd
-	rm bin/rmdir
-	rm bin/ren
-	rm bin/rename
-	rm bin/tree
-	rm bin/echo
-	rm bin/type
-	rm bin/more
+	rm -r bin/*
