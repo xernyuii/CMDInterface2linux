@@ -24,6 +24,10 @@ bin/md, bin/mkdir, bin/cls, bin/dir, bin/del, bin/rm, bin/rd, bin/rmdir, bin/ren
 	$(CC) src/type.c -o bin/type
 	$(CC) src/more.c -o bin/more
 
+test: src/sort.c
+	$(CC) src/sort.c -o bin/sort
+	
+
 .PHONY: clean
 clean:
 	rm bin/md
@@ -40,3 +44,4 @@ clean:
 	rm bin/echo
 	rm bin/type
 	rm bin/more
+	rm bin/comp

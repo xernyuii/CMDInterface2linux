@@ -8,7 +8,6 @@
 #include "../include/line.h"
 
 
-
 int main(int argc, char* argv[]){
     char lines[argc+1][255];
 

@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h> 
+#include "../include/line.h"
+ 
+int main(int argc, char** argv) 
+{   
+    char lines[argc+1][255];
+    predealLine(argc, argv, lines);
+    char* srcname = lines[1];
+    FILE* src = fopen(srcname, "w");
+    // 获取行数
+    char fileLine[1024]; 
+    int lineCnt = 0;
+    while(!feof(src)) {
+        fgets(fileLine, 1024, src);
+        lineCnt++;
+    }
+    // 读出文件数据到数组中
+    int i, j;
+    char fileLineList[lineCnt][1024], temp[1024];
+    for(i = 0; i < lineCnt; i++) {
+        fgets(fileLine, 1024, src);
+        strcpy(fileLineList[i], fileLine);
+    }
+    // 排序
+    for(i = 0; i < lineCnt-1; ++i) {
+        for(j = i+1; j < lineCnt; ++j) {
+            if(strcmp(fileLineList[i], fileLineList[j])>0) {
+                strcpy(temp, fileLineList[i]);
+                strcpy(fileLineList[i], fileLineList[j]);
+                strcpy(fileLineList[j], temp);
+            }
+        }
+    }
+
+    for(i = 0; i < lineCnt; i++) {
+        printf("%s\n", fileLineList[i]);
+    }
+    
+    fclose(src);
+    return 0;
+}
