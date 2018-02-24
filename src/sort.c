@@ -8,7 +8,7 @@ int main(int argc, char** argv)
     char lines[argc+1][255];
     predealLine(argc, argv, lines);
     char* srcname = lines[1];
-    FILE* src = fopen(srcname, "w");
+    FILE* src = fopen(srcname, "r");
     // 获取行数
     char fileLine[1024]; 
     int lineCnt = 0;
@@ -18,6 +18,7 @@ int main(int argc, char** argv)
     }
     // 读出文件数据到数组中
     int i, j;
+    rewind(src);
     char fileLineList[lineCnt][1024], temp[1024];
     for(i = 0; i < lineCnt; i++) {
         fgets(fileLine, 1024, src);
@@ -33,11 +34,14 @@ int main(int argc, char** argv)
             }
         }
     }
-
     for(i = 0; i < lineCnt; i++) {
-        printf("%s\n", fileLineList[i]);
+        int len = strlen(fileLineList[i]);
+        if(fileLineList[i][len-1] == '\n')
+            printf("%s", fileLineList[i]);
+        else
+            printf("%s\n", fileLineList[i]);
     }
-    
+
     fclose(src);
     return 0;
 }
