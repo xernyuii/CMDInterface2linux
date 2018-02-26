@@ -3,7 +3,8 @@
 ### INSTALL
     cd in repo dir
     make
-    ./bin/cmd
+    PT=$(readlink -f ./bin);export PATH="${PT}:$PATH"
+    cmd
 
 ---
 ## USAGE

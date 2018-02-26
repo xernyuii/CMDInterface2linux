@@ -1,1 +1,1 @@
-export PATH="/Users/xieandong/project/CMDInterface2linux/bin:$PATH"
+PT=$(readlink -f ./bin);export PATH="${PT}:$PATH"
