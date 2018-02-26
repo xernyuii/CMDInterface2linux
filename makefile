@@ -1,5 +1,6 @@
 $(CC)      :=gcc
 VPATH = src:bashlib:include
+BINPATH = $(shell cd ./bin; pwd)
 # makefile created by xern
 
 # put source code into src/
@@ -42,7 +43,7 @@ bashlib/type_prompt.c bashlib/read_command.c bashlib/builtin_command.c bashlib/p
 	$(CC) src/sort.c -o bin/sort
 	$(CC) src/tasklist.c -o bin/tasklist
 	$(CC) src/ipconfig.c -o bin/ipconfig
-		
+
 
 .PHONY: clean
 clean:
