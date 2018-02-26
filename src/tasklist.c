@@ -7,7 +7,7 @@
 #include <dirent.h>
 #include <pwd.h>
  
-void *travDir(char dir[]);
+void travDir(char dir[]);
 int printInfo(char d_name[]); 
 int isNum(char p_name[]);
 
@@ -16,7 +16,7 @@ int main(int ac,char *av[])
     travDir("/proc/");
 }
  
-void *travDir(char dir[])                         
+void travDir(char dir[])                         
 {
     DIR *dirp;
     struct dirent *direntp;

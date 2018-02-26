@@ -15,7 +15,7 @@ int main(int argc, char** argv)
    	while(!feof(src)) {
    		fgets(fileline, 1024, src);
    		if(strstr(fileline, findstr) != NULL) {
-   			printf("[%d]%s", linecntf, fileline);
+   			printf("[%d]%s", linecnt, fileline);
    		}
    		linecnt++;
    	}
