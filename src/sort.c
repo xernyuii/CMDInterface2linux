@@ -14,6 +14,9 @@ int main(int argc, char** argv)
     int lineCnt = 0;
     while(!feof(src)) {
         fgets(fileLine, 1024, src);
+        if(feof(src)) {
+            break;
+        }
         lineCnt++;
     }
     // 读出文件数据到数组中

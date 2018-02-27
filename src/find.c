@@ -14,6 +14,9 @@ int main(int argc, char** argv)
    	FILE *src = fopen(filename, "r");
    	while(!feof(src)) {
    		fgets(fileline, 1024, src);
+   		if(feof(src)) {
+			break;
+		}
    		if(strstr(fileline, findstr) != NULL) {
    			printf("[%d]%s", linecnt, fileline);
    		}

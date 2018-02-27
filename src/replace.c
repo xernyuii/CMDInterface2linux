@@ -20,7 +20,9 @@ int main(int argc, char** argv)
     // 替换文件内容
     FILE *src, *dst;
     src = fopen(srcname, "rb");
-    dst = fopen(dstname, "wb");
+    if((dst = fopen(dstname, "wb")) == NULL) {
+        printf("can not open file: %s\n", dstname);
+    }
     int bufferLen = 1024;
     int readCount = 0;
     char *buffer = (char*)malloc(bufferLen);
