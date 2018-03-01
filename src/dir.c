@@ -54,7 +54,7 @@ int main(int argc, char**argv){
         }
 
         printf("%.12s ", 4 + ctime(&buf.st_mtime));
-        if(strcmp(fp->d_name,".")==0 || strcmp(fp->d_name,"..")==0){
+        if(fp->d_type==DT_DIR){
             printf("        <DIR>");
             dir_num++;
             dir_size+=buf.st_size;
